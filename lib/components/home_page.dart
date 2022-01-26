@@ -12,8 +12,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late MediaQueryData queryData;
   double _currentSliderValue = 20;
-  double _weight = 0;
-  double _height = 0;
+  int _weight = 50;
+  int _height = 120;
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             Container(
-                width: double.infinity,
+                width: MediaQuery.of(context).size.width,
                 height: 200,
                 margin: const EdgeInsets.only(top: 10),
                 decoration: const BoxDecoration(
@@ -125,127 +125,149 @@ class _HomePageState extends State<HomePage> {
                   ],
                 )),
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: 185,
-                    height: 180,
-                    margin: const EdgeInsets.only(top: 10),
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: MyColors.blueOne),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+              Container(
+                width: 185,
+                height: 180,
+                margin: const EdgeInsets.only(top: 10),
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: MyColors.blueOne),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                        margin: const EdgeInsets.only(right: 10, top: 15),
+                        child: const Text(
+                          'weight',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        )),
+                    Text(
+                      '$_weight',
+                      style: const TextStyle(
+                          fontSize: 50, fontWeight: FontWeight.bold),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                            margin: const EdgeInsets.only(right: 10, top: 15),
-                            child: const Text(
-                              'weight',
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
-                            )),
-                        const Text(
-                          '59',
-                          style: TextStyle(
-                              fontSize: 50, fontWeight: FontWeight.bold),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Container(
-                              width: 50,
-                              height: 50,
-                              margin: const EdgeInsets.only(left: 20),
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(70)),
-                                  color: MyColors.red),
-                              child: const Icon(
-                                FontAwesomeIcons.minus,
-                                size: 25,
-                              ),
+                          width: 50,
+                          height: 50,
+                          margin: const EdgeInsets.only(left: 20),
+                          decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(70)),
+                              color: MyColors.red),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _weight--;
+                              });
+                            },
+                            child: const Icon(
+                              FontAwesomeIcons.minus,
+                              size: 25,
                             ),
-                            Container(
-                              width: 50,
-                              height: 50,
-                              margin: const EdgeInsets.only(right: 15),
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(70)),
-                                  color: MyColors.red),
+                          ),
+                        ),
+                        Container(
+                            width: 50,
+                            height: 50,
+                            margin: const EdgeInsets.only(right: 15),
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(70)),
+                                color: MyColors.red),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _weight++;
+                                });
+                              },
                               child: const Icon(
                                 FontAwesomeIcons.plus,
                                 size: 25,
                               ),
-                            )
-                          ],
-                        )
+                            ))
                       ],
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                width: 185,
+                height: 180,
+                margin: const EdgeInsets.only(top: 10),
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: MyColors.blueOne),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                        margin: const EdgeInsets.only(right: 10, top: 15),
+                        child: const Text(
+                          'height',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        )),
+                    Text(
+                      '$_height',
+                      style: const TextStyle(
+                          fontSize: 50, fontWeight: FontWeight.bold),
                     ),
-                  )),
-              GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: 185,
-                    height: 180,
-                    margin: const EdgeInsets.only(top: 10),
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: MyColors.blueOne),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                            margin: const EdgeInsets.only(right: 10, top: 15),
-                            child: const Text(
-                              'weight',
-                              style: TextStyle(
-                                fontSize: 20,
-                              ),
-                            )),
-                        const Text(
-                          '120',
-                          style: TextStyle(
-                              fontSize: 50, fontWeight: FontWeight.bold),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Container(
-                              width: 50,
-                              height: 50,
-                              margin: const EdgeInsets.only(left: 20),
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(70)),
-                                  color: MyColors.red),
+                            width: 50,
+                            height: 50,
+                            margin: const EdgeInsets.only(left: 20),
+                            decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(70)),
+                                color: MyColors.red),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _height--;
+                                });
+                              },
                               child: const Icon(
                                 FontAwesomeIcons.minus,
                                 size: 25,
                               ),
+                            )),
+                        Container(
+                          width: 50,
+                          height: 50,
+                          margin: const EdgeInsets.only(right: 15),
+                          decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(70)),
+                              color: MyColors.red),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _height++;
+                              });
+                            },
+                            child: const Icon(
+                              FontAwesomeIcons.plus,
+                              size: 25,
                             ),
-                            Container(
-                              width: 50,
-                              height: 50,
-                              margin: const EdgeInsets.only(right: 15),
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(70)),
-                                  color: MyColors.red),
-                              child: const Icon(
-                                FontAwesomeIcons.plus,
-                                size: 25,
-                              ),
-                            )
-                          ],
+                          ),
                         )
                       ],
-                    ),
-                  ))
+                    )
+                  ],
+                ),
+              )
             ]),
             Container(
-              width: double.infinity,
+              width: MediaQuery.of(context).size.width,
               height: 64,
               margin: const EdgeInsets.only(top: 10),
               color: MyColors.pink,
