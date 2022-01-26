@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imc/utils/chose_color.dart';
 import 'package:imc/utils/my_colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -14,6 +15,7 @@ class _HomePageState extends State<HomePage> {
   double _currentSliderValue = 20;
   int _weight = 50;
   int _height = 120;
+  bool currentSex = false;
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +36,19 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        currentSex = false;
+                      });
+                    },
                     child: Container(
                       width: 185,
                       height: 200,
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: MyColors.blueOne),
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: chooseColor(
+                              !currentSex, [MyColors.dark, MyColors.blueOne])),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -60,13 +68,19 @@ class _HomePageState extends State<HomePage> {
                       ),
                     )),
                 GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        currentSex = true;
+                      });
+                    },
                     child: Container(
                       width: 185,
                       height: 200,
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: MyColors.blueOne),
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          color: chooseColor(
+                              currentSex, [MyColors.dark, MyColors.blueOne])),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
