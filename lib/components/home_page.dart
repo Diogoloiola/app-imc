@@ -3,6 +3,7 @@ import 'package:imc/utils/calculator.dart';
 import 'package:imc/utils/chose_color.dart';
 import 'package:imc/utils/my_colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:imc/utils/screen_arguments.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -285,6 +286,12 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Calculator calculator =
                     Calculator(_currentSliderValue / 100, _weight);
+
+                double imc = calculator.calculate();
+
+                Navigator.of(context).pushNamed('/result',
+                    arguments:
+                        ScreenArguments(calculator.description(imc), imc));
               },
               child: Container(
                 width: MediaQuery.of(context).size.width,
