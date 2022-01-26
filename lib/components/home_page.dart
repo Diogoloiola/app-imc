@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imc/utils/calculator.dart';
 import 'package:imc/utils/chose_color.dart';
 import 'package:imc/utils/my_colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -14,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   late MediaQueryData queryData;
   double _currentSliderValue = 20;
   int _weight = 50;
-  int _height = 120;
+  int _age = 120;
   bool currentSex = false;
 
   @override
@@ -222,13 +223,13 @@ class _HomePageState extends State<HomePage> {
                     Container(
                         margin: const EdgeInsets.only(right: 10, top: 15),
                         child: const Text(
-                          'height',
+                          'Age',
                           style: TextStyle(
                             fontSize: 20,
                           ),
                         )),
                     Text(
-                      '$_height',
+                      '$_age',
                       style: const TextStyle(
                           fontSize: 50, fontWeight: FontWeight.bold),
                     ),
@@ -246,7 +247,7 @@ class _HomePageState extends State<HomePage> {
                             child: GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  _height--;
+                                  _age--;
                                 });
                               },
                               child: const Icon(
@@ -265,7 +266,7 @@ class _HomePageState extends State<HomePage> {
                           child: GestureDetector(
                             onTap: () {
                               setState(() {
-                                _height++;
+                                _age++;
                               });
                             },
                             child: const Icon(
@@ -280,15 +281,21 @@ class _HomePageState extends State<HomePage> {
                 ),
               )
             ]),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: 64,
-              margin: const EdgeInsets.only(top: 10),
-              color: MyColors.pink,
-              child: const Center(
-                child: Text(
-                  'Calcular',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            GestureDetector(
+              onTap: () {
+                Calculator calculator =
+                    Calculator(_currentSliderValue / 100, _weight);
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 64,
+                margin: const EdgeInsets.only(top: 10),
+                color: MyColors.pink,
+                child: const Center(
+                  child: Text(
+                    'Calcular',
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             )
